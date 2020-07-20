@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    # 外置jdbc、redis和mail配置文件
+    active: jdbc,redis,mail
+  # 关闭thymeleaf页面缓存
+  thymeleaf:
+    cache: false
+  # 配置国际化资源文件
+  messages:
+    basename: i18n.logo
+
+# MyBatis配置
+mybatis:
+  configuration:
+    #开启驼峰命名匹配映射
+    map-underscore-to-camel-case: true
+  #配置MyBatis的xml映射文件路径
+  mapper-locations: classpath:mapper/*.xml
+  #配置XML映射文件中指定的实体类别名路径
+  type-aliases-package: com.itheima.model.domain
+
+#pagehelper分页设置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+#浏览器cookie相关设置
+COOKIE:
+  # 设置cookie默认时长为30分钟
+  VALIDITY: 1800
